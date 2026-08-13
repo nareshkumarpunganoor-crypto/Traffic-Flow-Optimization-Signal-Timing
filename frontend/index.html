@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🚦 Traffic Flow Optimization</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚦</text></svg>">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <span class="logo">🚦</span>
+      <h1>Traffic Flow Optimization</h1>
+    </div>
+    <div class="header-right">
+      <span class="badge" id="statusBadge">Connecting...</span>
+      <span id="clock"></span>
+    </div>
+  </header>
+
+  <nav>
+    <button class="tab active" data-tab="dashboard">📊 Dashboard</button>
+    <button class="tab" data-tab="signals">🚦 Signals</button>
+    <button class="tab" data-tab="forecast">📈 Forecast</button>
+    <button class="tab" data-tab="history">🕐 History</button>
+    <button class="tab" data-tab="optimize">⚙️ Optimize</button>
+  </nav>
+
+  <main>
+
+    <!-- DASHBOARD -->
+    <section id="tab-dashboard" class="tab-content active">
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">🚗</div>
+          <div class="card-body">
+            <p class="card-label">Total Volume</p>
+            <p class="card-value" id="totalVolume">--</p>
+            <p class="card-unit">vehicles/hr</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔴</div>
+          <div class="card-body">
+            <p class="card-label">Congestion</p>
+            <p class="card-value" id="congestionLevel">--</p>
+            <p class="card-unit">level</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <div class="card-body">
+            <p class="card-label">Avg Speed</p>
+            <p class="card-value" id="avgSpeed">--</p>
+            <p class="card-unit">km/h</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">⏱️</div>
+          <div class="card-body">
+            <p class="card-label">Peak Hour</p>
+            <p class="card-value" id="peakHour">--</p>
+            <p class="card-unit">:00</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚠️</div>
+          <div class="card-body">
+            <p class="card-label">Incidents</p>
+            <p class="card-value" id="incidents">--</p>
+            <p class="card-unit">today</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📍</div>
+          <div class="card-body">
+            <p class="card-label">Avg Daily</p>
+            <p class="card-value" id="avgDaily">--</p>
+            <p class="card-unit">vehicles</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Traffic Volume Chart -->
+      <div class="chart-box">
+        <h2>Hourly Traffic Volume Pattern</h2>
+        <div class="chart-wrap">
+          <canvas id="patternChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Intersection Status -->
+      <div class="chart-box">
+        <h2>Intersection Status</h2>
+        <div class="intersection-grid" id="intersectionGrid"></div>
+      </div>
+
+      <!-- Train -->
+      <div class="chart-box">
+        <h2>🧠 Model Training</h2>
+        <p class="sub-text">
+          Train the ML model to predict traffic volume
+          and optimize signal timing.
+        </p>
+        <button class="btn btn-primary" id="trainBtn" onclick="trainModel()">
+          🧠 Train Model
+        </button>
+        <p id="trainStatus" class="train-status"></p>
+      </div>
+
+    </section>
+
+    <!-- SIGNALS -->
+    <section id="tab-signals" class="tab-content">
+      <div class="forecast-header">
+        <h2>🚦 Signal Timing Control</h2>
+        <button class="btn btn-primary" onclick="loadPrediction()">
+          🔄 Refresh Signals
+        </button>
+      </div>
+
+      <!-- Signal Display -->
+      <div class="signals-container" id="signalsContainer">
+        <div class="signal-box" id="signal-north">
+          <h3>⬆️ North</h3>
+          <div class="traffic-light">
+            <div class="light red"   id="n-red"></div>
+            <div class="light yellow"id="n-yellow"></div>
+            <div class="light green" id="n-green"></div>
+          </div>
+          <p class="green-time" id="n-time">-- sec</p>
+          <p class="signal-vol" id="n-vol">-- vehicles</p>
+        </div>
+        <div class="signal-box" id="signal-south">
+          <h3>⬇️ South</h3>
+          <div class="traffic-light">
+            <div class="light red"   id="s-red"></div>
+            <div class="light yellow"id="s-yellow"></div>
+            <div class="light green" id="s-green"></div>
+          </div>
+          <p class="green-time" id="s-time">-- sec</p>
+          <p class="signal-vol" id="s-vol">-- vehicles</p>
+        </div>
+        <div class="signal-box" id="signal-east">
+          <h3>➡️ East</h3>
+          <div class="traffic-light">
+            <div class="light red"   id="e-red"></div>
+            <div class="light yellow"id="e-yellow"></div>
+            <div class="light green" id="e-green"></div>
+          </div>
+          <p class="green-time" id="e-time">-- sec</p>
+          <p class="signal-vol" id="e-vol">-- vehicles</p>
+        </div>
+        <div class="signal-box" id="signal-west">
+          <h3>⬅️ West</h3>
+          <div class="traffic-light">
+            <div class="light red"   id="w-red"></div>
+            <div class="light yellow"id="w-yellow"></div>
+            <div class="light green" id="w-green"></div>
+          </div>
+          <p class="green-time" id="w-time">-- sec</p>
+          <p class="signal-vol" id="w-vol">-- vehicles</p>
+        </div>
+      </div>
+
+      <!-- Signal Chart -->
+      <div class="chart-box" style="margin-top:20px">
+        <h2>Signal Timing Distribution</h2>
+        <div class="chart-wrap">
+          <canvas id="signalChart"></canvas>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- FORECAST -->
+    <section id="tab-forecast" class="tab-content">
+      <div class="forecast-header">
+        <h2>24-Hour Traffic Forecast</h2>
+        <button class="btn btn-primary" onclick="loadForecast()">
+          🔄 Refresh
+        </button>
+      </div>
+
+      <div class="chart-box">
+        <div class="chart-wrap">
+          <canvas id="forecastChart"></canvas>
+        </div>
+      </div>
+
+      <div class="table-box">
+        <table id="forecastTable">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Volume</th>
+              <th>Congestion</th>
+              <th>Avg Speed</th>
+              <th>Green Time</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- HISTORY -->
+    <section id="tab-history" class="tab-content">
+      <div class="forecast-header">
+        <h2>Traffic History</h2>
+        <select id="hoursSelect" onchange="loadHistory()">
+          <option value="24">Last 24 hours</option>
+          <option value="48" selected>Last 48 hours</option>
+          <option value="72">Last 72 hours</option>
+          <option value="168">Last 7 days</option>
+        </select>
+      </div>
+
+      <div class="chart-box">
+        <div class="chart-wrap">
+          <canvas id="historyChart"></canvas>
+        </div>
+      </div>
+
+      <div class="table-box">
+        <table id="historyTable">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Volume</th>
+              <th>Speed (km/h)</th>
+              <th>Congestion</th>
+              <th>Weather</th>
+              <th>Incident</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- OPTIMIZE -->
+    <section id="tab-optimize" class="tab-content">
+      <div class="forecast-header">
+        <h2>⚙️ Signal Optimizer</h2>
+      </div>
+
+      <div class="optimize-form">
+        <h3>Enter Current Traffic Volumes</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>⬆️ North (vehicles/hr)</label>
+            <input type="number" id="inp-north" value="400" min="0" max="2000"/>
+          </div>
+          <div class="form-group">
+            <label>⬇️ South (vehicles/hr)</label>
+            <input type="number" id="inp-south" value="350" min="0" max="2000"/>
+          </div>
+          <div class="form-group">
+            <label>➡️ East (vehicles/hr)</label>
+            <input type="number" id="inp-east" value="500" min="0" max="2000"/>
+          </div>
+          <div class="form-group">
+            <label>⬅️ West (vehicles/hr)</label>
+            <input type="number" id="inp-west" value="300" min="0" max="2000"/>
+          </div>
+          <div class="form-group">
+            <label>🌤️ Weather</label>
+            <select id="inp-weather">
+              <option value="0">Clear</option>
+              <option value="1">Rain</option>
+              <option value="2">Heavy Rain</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="runOptimize()">
+          ⚙️ Optimize Signals
+        </button>
+      </div>
+
+      <!-- Results -->
+      <div id="optimizeResults" style="display:none">
+        <div class="chart-box" style="margin-top:20px">
+          <h2>Optimized Signal Timing</h2>
+          <div class="chart-wrap">
+            <canvas id="optimizeChart"></canvas>
+          </div>
+        </div>
+
+        <div class="result-cards" id="resultCards"></div>
+
+        <div class="chart-box" style="margin-top:20px">
+          <h2>💡 Recommendations</h2>
+          <div id="recommendationsList"></div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="chart.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
