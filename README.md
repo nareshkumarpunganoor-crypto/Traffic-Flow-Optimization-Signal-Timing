@@ -1,112 +1,119 @@
 # 🚦 Traffic Flow Optimization – Signal Timing
 
-An AI-based **Traffic Flow Optimization and Signal Timing System** designed to improve traffic movement at road intersections by optimizing traffic signal timings according to traffic conditions.
+<p align="center">
+
+**AI-Based Traffic Flow Optimization and Intelligent Signal Timing System**
+
+</p>
+
+<p align="center">
+
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-Traffic%20Optimization-success?style=for-the-badge)](https://traffic-optimization-c5wq.onrender.com)
+
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge\&logo=github)](https://github.com/nareshkumarpunganoor-crypto/Traffic-Flow-Optimization-Signal-Timing)
+
+</p>
+
+---
+
+## 🌐 Live Demo
+
+🚀 **Try the deployed application:**
+
+👉 **https://traffic-optimization-c5wq.onrender.com**
+
+The application is deployed on **Render** and is designed to provide an AI-based approach to traffic flow analysis and signal-timing optimization.
+
+> ⚠️ If the application temporarily shows a `503 Service Unavailable` error, the Render service may need to be restarted or may currently be unavailable.
+
+---
 
 ## 📌 Project Overview
 
-Traffic congestion is a major problem in urban areas, especially at busy intersections. Traditional traffic signals generally operate using fixed timing schedules, which may not adapt effectively to changing traffic density.
+**Traffic Flow Optimization – Signal Timing** is an AI/Deep Learning-based project designed to improve traffic management by optimizing traffic signal timings according to traffic conditions.
 
-This project aims to provide a smarter approach to **traffic signal timing optimization**. The system analyzes traffic conditions and determines suitable signal timings to improve traffic flow, reduce unnecessary waiting time, and minimize congestion.
+Traditional traffic signals often use fixed timing intervals. This approach may not respond effectively to changing traffic density. The proposed system aims to analyze traffic conditions and provide more efficient signal timing decisions.
 
-The project is developed as a **Deep Learning Project** with a separate frontend and backend architecture.
+The project contains separate **frontend** and **backend** components and includes deployment configuration for Render. The GitHub repository currently contains `backend`, `frontend`, `Procfile`, `render.yaml`, `requirements.txt`, `run.py`, and related files.
+
+---
 
 ## 🎯 Objectives
 
-* 🚗 Optimize traffic signal timing based on traffic conditions.
-* ⏱️ Reduce vehicle waiting time at intersections.
-* 🚦 Improve overall traffic flow.
-* 📉 Reduce unnecessary congestion and queue length.
-* 🌱 Help reduce fuel consumption and vehicle emissions caused by prolonged idling.
-* 🤖 Demonstrate the application of AI/Deep Learning in intelligent transportation systems.
+* 🚗 Reduce traffic congestion.
+* 🚦 Optimize traffic signal timing.
+* ⏱️ Reduce vehicle waiting time.
+* 📊 Analyze traffic conditions.
+* 🤖 Apply AI/Deep Learning techniques to traffic management.
+* 🌱 Reduce unnecessary fuel consumption and emissions.
+* 🏙️ Support future smart-city transportation systems.
+
+---
 
 ## ✨ Key Features
 
-* **Dynamic Signal Timing**
+* 🚦 **Intelligent Signal Timing**
+* 🚗 **Traffic Flow Analysis**
+* 📊 **Traffic Condition Monitoring**
+* 🤖 **AI/Deep Learning Integration**
+* 🌐 **Web-Based Interface**
+* ⚙️ **Backend Processing**
+* ☁️ **Cloud Deployment**
 
-  * Adjusts signal timing according to traffic conditions.
+---
 
-* **Traffic Flow Analysis**
-
-  * Processes traffic-related information to support better signal decisions.
-
-* **Frontend Interface**
-
-  * Provides a user-friendly interface for interacting with the system.
-
-* **Backend Processing**
-
-  * Handles application logic and traffic optimization operations.
-
-* **Optimized Traffic Management**
-
-  * Gives priority to traffic conditions instead of relying only on fixed signal schedules.
-
-* **Deployment Support**
-
-  * Includes configuration files for deploying the application using platforms such as Render.
-
-## 🏗️ Project Architecture
+## 🏗️ System Architecture
 
 ```text
-                ┌──────────────────────┐
-                │      User / Admin     │
-                └──────────┬───────────┘
-                           │
-                           ▼
-                ┌──────────────────────┐
-                │      Frontend UI      │
-                │  Traffic Monitoring   │
-                └──────────┬───────────┘
-                           │
-                           ▼
-                ┌──────────────────────┐
-                │       Backend        │
-                │   Processing & API    │
-                └──────────┬───────────┘
-                           │
-                           ▼
-                ┌──────────────────────┐
-                │ Traffic Flow Analysis│
-                └──────────┬───────────┘
-                           │
-                           ▼
-                ┌──────────────────────┐
-                │ Signal Timing Logic  │
-                └──────────┬───────────┘
-                           │
-                           ▼
-                ┌──────────────────────┐
-                │ Optimized Signal     │
-                │ Timing / Output      │
-                └──────────────────────┘
+                    ┌───────────────────┐
+                    │       User        │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │    Frontend UI    │
+                    │ Traffic Dashboard │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │     Backend       │
+                    │  Flask / Python   │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │ Traffic Analysis  │
+                    │   & AI Model      │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │ Signal Timing     │
+                    │   Optimization    │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │ Optimized Traffic │
+                    │      Flow         │
+                    └───────────────────┘
 ```
 
-## 🛠️ Technologies Used
+---
 
-### Frontend
+## 🛠️ Technologies
 
-* HTML
-* CSS
-* JavaScript
+* **Python**
+* **Flask**
+* **HTML5**
+* **CSS3**
+* **JavaScript**
+* **Machine Learning / Deep Learning**
+* **Render**
+* **Gunicorn**
 
-### Backend
-
-* Python
-* Flask
-
-### AI / Data Processing
-
-* Deep Learning / Machine Learning techniques
-* Traffic-flow analysis
-* Data-driven signal optimization
-
-### Deployment
-
-* Render
-* Gunicorn
-* Procfile
-
-The repository contains deployment configuration files including `Procfile`, `render.yaml`, and `runtime.txt`.
+---
 
 ## 📂 Project Structure
 
@@ -114,53 +121,58 @@ The repository contains deployment configuration files including `Procfile`, `re
 Traffic-Flow-Optimization-Signal-Timing/
 │
 ├── backend/
-│   └── Backend application files
+│   └── Backend application
 │
 ├── frontend/
-│   └── Frontend application files
+│   └── Frontend interface
 │
-├── requirements.txt
 ├── Procfile
 ├── render.yaml
-├── runtime.txt
+├── requirements.txt
 ├── run.py
+├── runtime.txt
 ├── start.bat
 ├── write_appjs.py
 └── .gitignore
 ```
 
-## ⚙️ How the System Works
+The repository structure can be verified on GitHub.
+
+---
+
+## ⚙️ How It Works
 
 1. Traffic-related information is provided to the system.
-2. The backend processes the available traffic information.
-3. Traffic conditions are analyzed to determine the level of congestion.
-4. The system calculates suitable signal timing.
-5. More appropriate green-light duration can be assigned to traffic with higher demand.
-6. The optimized timing helps improve traffic movement and reduce unnecessary waiting.
+2. The backend receives and processes the data.
+3. Traffic conditions are analyzed.
+4. The AI/Deep Learning component evaluates the traffic situation.
+5. Suitable signal timing is determined.
+6. The optimized signal timing is presented through the application.
+7. The approach can help reduce congestion and vehicle waiting time.
 
-Adaptive traffic-signal optimization is a well-established application area for AI and reinforcement learning, where traffic-control systems can learn or calculate improved signal policies based on traffic conditions.
+---
 
-## 🚀 Installation & Setup
+## 🚀 Run Locally
 
-### 1. Clone the Repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/nareshkumarpunganoor-crypto/Traffic-Flow-Optimization-Signal-Timing.git
 ```
 
-### 2. Navigate to the Project
+### Enter the project directory
 
 ```bash
 cd Traffic-Flow-Optimization-Signal-Timing
 ```
 
-### 3. Create a Virtual Environment
+### Create virtual environment
 
 ```bash
 python -m venv venv
 ```
 
-### 4. Activate the Environment
+### Activate it
 
 **Windows:**
 
@@ -168,59 +180,53 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
-**Linux / macOS:**
+**Linux/macOS:**
 
 ```bash
 source venv/bin/activate
 ```
 
-### 5. Install Dependencies
+### Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 6. Run the Application
+### Run the application
 
 ```bash
 python run.py
 ```
 
-Then open the local URL displayed by the application in your browser.
+---
 
-## 📊 Expected Benefits
+## ☁️ Deployment
 
-The proposed system is intended to:
+The project is configured for deployment using **Render**.
 
-* Reduce traffic congestion.
-* Reduce vehicle waiting time.
-* Improve intersection efficiency.
-* Provide adaptive signal timing.
-* Support intelligent traffic-management applications.
-* Provide a foundation for future smart-city transportation systems.
+### 🚀 Live Application
+
+**https://traffic-optimization-c5wq.onrender.com**
+
+### 💻 GitHub Repository
+
+**https://github.com/nareshkumarpunganoor-crypto/Traffic-Flow-Optimization-Signal-Timing**
+
+---
 
 ## 🔮 Future Enhancements
 
-* 📷 Integrate real-time CCTV/video-based vehicle detection.
-* 🧠 Implement advanced Deep Reinforcement Learning.
-* 🚘 Detect and classify different vehicle types.
-* 📡 Integrate IoT-based traffic sensors.
-* 🗺️ Add multiple-intersection traffic coordination.
-* 📊 Add real-time traffic analytics dashboards.
-* ☁️ Deploy the complete system as a cloud-based application.
-* 🚑 Add priority handling for emergency vehicles such as ambulances and fire trucks.
-* 📈 Store historical traffic data for predictive analysis.
+* 📷 Real-time vehicle detection using CCTV.
+* 🚘 Vehicle classification.
+* 🧠 Deep Reinforcement Learning for adaptive traffic signals.
+* 🚑 Emergency vehicle priority.
+* 📍 GPS and map integration.
+* 📊 Real-time traffic analytics.
+* 🏙️ Multi-intersection coordination.
+* 📱 Mobile application.
+* ☁️ Real-time cloud-based traffic monitoring.
 
-## 🌍 Applications
-
-This system can be useful for:
-
-* Smart City Traffic Management
-* Intelligent Transportation Systems
-* Urban Traffic Control
-* Traffic Signal Optimization
-* Congestion Management
-* AI-Based Transportation Research
+---
 
 ## 👨‍💻 Author
 
@@ -228,20 +234,18 @@ This system can be useful for:
 
 B.Tech – Artificial Intelligence & Data Science
 
-## ⭐ Project
+---
 
-If you find this project useful, consider giving the repository a ⭐ on GitHub.
+## ⭐ Project Links
 
-**GitHub Repository:**
+🚀 **Live Demo:**
+https://traffic-optimization-c5wq.onrender.com
+
+💻 **GitHub:**
 https://github.com/nareshkumarpunganoor-crypto/Traffic-Flow-Optimization-Signal-Timing
 
 ---
 
-### 📜 License
+## 📜 License
 
 This project is developed for **educational and academic purposes**.
----
-
-## Live Demo
-https://traffic-optimization-c5wq.onrender.com/
-
